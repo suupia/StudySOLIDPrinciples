@@ -6,11 +6,11 @@ namespace Generic
     {
         void Start()
         {
-            // GenericClassTest();
+            GenericClassTest();
             
             // GenericClassNeoTest();
             
-            GenericMethodTest();
+            // GenericMethodTest();
         }
 
 

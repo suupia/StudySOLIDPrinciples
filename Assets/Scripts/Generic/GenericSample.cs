@@ -1,4 +1,6 @@
-﻿namespace Generic
+﻿using UnityEngine;
+
+namespace Generic
 {
 
     //  ジェネリッククラス
@@ -17,6 +19,16 @@
     public interface IGenericInterface<out T>   // covariantとしてoutを使うことができる
     {
         T Value { get; }
+    }
+    
+    public interface IGenericInterface2<in T>   // contravariantとしてinを使うことができる
+    {
+        void SetValue(T value);
+    }
+    
+    public interface IGenericInterface3<T>   // 両方使うこともできる
+    {
+        T CalcValue(T value);
     }
     
     public class GenericClassNeo<T> : IGenericInterface<T>
