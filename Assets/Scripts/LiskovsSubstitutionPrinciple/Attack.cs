@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Object = System.Object;
 
 namespace LiskovsSubstitutionPrinciple
 {
@@ -67,6 +68,20 @@ namespace LiskovsSubstitutionPrinciple
     // 今回の場合は、BaseAttackを拡張していくのではなく、
     // インターフェイスIOnAttackを作っていくべき。
     // そうすれば、事前条件、事後条件などを考慮する必要がない
+
+    public class Test
+    {
+        void test()
+        {
+            Action<System.Object> objAction = x => { Debug.Log(x.ToString());};
+            Action<string> strAction = x => { Debug.Log(x);};
+            strAction = objAction;  // エラー
+            
+      
+        }
+    }
+
+
     
 
 }
