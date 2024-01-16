@@ -4,7 +4,7 @@
     {
         int Hp { get; set; }
     }
-    public interface IOnAttack
+    interface IOnAttack
     {
         void OnAttack(IHpSetter hpSetter, int damage);
     }
