@@ -24,8 +24,8 @@ namespace DependencyInversionPrinciple
     // UI
     public class HpInfo
     {   
-        Func<int> MaxHp { init; }
-        Func<int> GetHp { init; }
+       public Func<int> MaxHp = () => 0;
+       public Func<int> GetHp = () => 0;
     }
     
     public class HPBar2 : MonoBehaviour
