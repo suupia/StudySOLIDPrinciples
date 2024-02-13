@@ -69,7 +69,7 @@ namespace InterfaceSegregationPrinciple
 
         class InfiniteBankAccount : IBankAccount
         {
-            public virtual double WithdrawMoney(double amount)
+            public double WithdrawMoney(double amount)
             {
                 // 常にamount引き出せる
                 return amount;
@@ -91,7 +91,7 @@ namespace InterfaceSegregationPrinciple
         {
             readonly double _atk = 100;
             readonly IBankAccount _bankAccount;
-            public AfterRealMoneyAttack(IBankAccount bankAccount)
+            public AfterRealMoneyAttack(IBankAccount bankAccount)  // インターフェイスで受け取るようにする
             {
                 _bankAccount = bankAccount;
             }
