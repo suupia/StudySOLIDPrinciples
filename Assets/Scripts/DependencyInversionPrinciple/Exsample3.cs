@@ -24,8 +24,8 @@ namespace DependencyInversionPrinciple
     // UI
     public class HpInfo
     {   
-        public Func<int> MaxHp = () => 0;
-        public Func<int> GetHp = () => 0;
+        Func<int> MaxHp { init; }
+        Func<int> GetHp { init; }
     }
     
     public class HPBar2 : MonoBehaviour
@@ -41,6 +41,11 @@ namespace DependencyInversionPrinciple
             {
                 MaxHp = () => hero.MaxHp,
                 GetHp = () => hero.Hp
+            };
+            var nilHpInfo = new HpInfo()
+            {
+                MaxHp = () => 0,
+                GetHp = () => 0
             };
         }
         

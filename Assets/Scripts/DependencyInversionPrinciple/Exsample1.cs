@@ -1,22 +1,48 @@
-﻿namespace DependencyInversionPrinciple
+﻿using System;
+
+namespace DependencyInversionPrinciple
 {
     // ドメイン
     public class Hero0
     {
-        public int Hp { get; set; }
+        int _hp;
+        public int Hp
+        {
+            get => _hp;
+            set
+            {
+                _hp = value;
+                _updateHp?.Invoke(_hp);
+            }
+        }
+        Action<int> _updateHp;
+        
+        public void Subscribe(Action<int> updateHp)
+        {
+            _updateHp = updateHp;
+        }
+        
         HPBar0 _bar0;
         
         public Hero0(HPBar0 bar, int maxHp)
         {
             _bar0 = bar;
             Hp = maxHp;
-            _bar0.UpdateHp(maxHp);
         }
         
         public void SetDamage(double damage)
         {
             Hp -= (int)damage;
-            _bar0.UpdateHp(Hp);
+        }
+    }
+
+    public class Client
+    {
+        public void Main()
+        {
+            var bar = new HPBar0();
+            var hero = new Hero0(bar, 100);
+            hero.Subscribe(bar.UpdateHp);
         }
     }
     
